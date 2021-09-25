@@ -1,7 +1,9 @@
 package com.macquarie.niks.util;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.macquarie.niks.dao.InterestRateCalculatorRepository;
 import com.macquarie.niks.dto.AccountBalanceDTO;
 import com.macquarie.niks.dto.AccountDetailsDTO;
+import com.macquarie.niks.dto.InterestRateCalculatorRequestDTO;
 
 @Service
 public class InterestRateCalculatorUtil {
@@ -73,6 +76,37 @@ public class InterestRateCalculatorUtil {
 		//Step 1: Convert the DTO to Entity
 		
 		/* Step 2: Save the entity in Couchbase. 
+		 * 		> Document ID will be bsb_identification_Year_Month.
+		 * 		> Default Initial Status for document will be IN_PROGRESS. This will be defined in domain class itself.
+		 * 		> If the feed date is last date of Month, We will change the status of document to COMPLETED.
+		 * 		This COMPLETED status will be used by our monthly calculator service to pick up all the employee records
+		 * 		for which interest rates has been accrued.	 		
+		 * 		> All the failures like folliowing one which are temporary in nature will be retried
+		 * 			 i) CAS MISMATCH EXCEPTION
+		 * 			 ii) Temporary Failure Exception
+		 *      > All other failures will be only logged and status of document will be marked as FAILED.     
+		 *           
+		 *           */
+		
+	}
+	
+	/**
+	 * This method will be used to save the daily feed in our couchbase. 
+	 * We are using reactive coucbhase methods for our purposes.
+	 * Detail flow of method is defined 
+	 * @param feedDate
+	 * @param accountBalanceDTO
+	 */
+	public void saveDailyFeed(InterestRateCalculatorRequestDTO interestRateCalculatorDTO) {
+		
+		SimpleDateFormat simpleDateFormatter = new SimpleDateFormat("YYYY-MM-DD");
+		String feedDate = simpleDateFormatter.format(interestRateCalculatorDTO.getBalanceDate());
+		final LocalDate localDate = LocalDate.parse(feedDate);
+		
+		
+		//Step 1: Convert the DTO List to Entity List
+		
+		/* Step 2: Save the entity in Couchbase in bulk. 
 		 * 		> Document ID will be bsb_identification_Year_Month.
 		 * 		> Default Initial Status for document will be IN_PROGRESS. This will be defined in domain class itself.
 		 * 		> If the feed date is last date of Month, We will change the status of document to COMPLETED.

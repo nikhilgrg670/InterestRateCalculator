@@ -30,7 +30,7 @@ public class InterestRateCalculatorServiceImpl implements InterestRateCalculator
 	 */
 
 	@Override
-	public void saveDailyFeeds(InterestRateCalculatorRequestDTO interestRateCalculatorDTO) {
+	public void processDailyFeeds(InterestRateCalculatorRequestDTO interestRateCalculatorDTO) {
 
 		try {
 			SimpleDateFormat simpleDateFormatter = new SimpleDateFormat("YYYY-MM-DD");

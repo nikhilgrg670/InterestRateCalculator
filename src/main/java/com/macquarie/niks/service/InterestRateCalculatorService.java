@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 public interface InterestRateCalculatorService
 {
      
-	void saveDailyFeeds(InterestRateCalculatorRequestDTO interestRateCalculatorDTO);
+	void processDailyFeeds(InterestRateCalculatorRequestDTO interestRateCalculatorDTO);
 	
 	Flux<AccountsMonthlyInterestDTO> calculateMonthlyInterest(AccountDetailsDTO accountDetails, String date);
 	
