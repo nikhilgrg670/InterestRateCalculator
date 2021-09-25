@@ -1,0 +1,10 @@
+com\howtodoinjava\demo\config\AppConfig.class
+com\howtodoinjava\demo\controller\EmployeeController.class
+com\howtodoinjava\demo\config\WebFluxConfig.class
+com\howtodoinjava\demo\config\MongoConfig.class
+com\howtodoinjava\demo\WebfluxFunctionalApp.class
+com\howtodoinjava\demo\model\Employee.class
+com\howtodoinjava\demo\dao\EmployeeRepositoryImpl.class
+com\howtodoinjava\demo\service\EmployeeService.class
+com\howtodoinjava\demo\service\IEmployeeService.class
+com\howtodoinjava\demo\dao\EmployeeRepository.class
