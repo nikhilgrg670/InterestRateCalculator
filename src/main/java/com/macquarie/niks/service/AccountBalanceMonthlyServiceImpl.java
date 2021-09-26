@@ -4,25 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.macquarie.niks.dto.EntityDTO;
 import com.macquarie.niks.model.AccountBalanceMonthlyDetails;
-import com.macquarie.niks.repo.AccountBalanceDailyDetailsRepository;
+import com.macquarie.niks.repo.AccountBalanceMonthlyDetailsRepository;
 
 import reactor.core.publisher.Flux;
 
-public class AccountBalanceServiceImpl implements AccountBalanceDailyService{
+public class AccountBalanceMonthlyServiceImpl implements AccountBalanceMonthlyService {
 	
 	@Autowired
-	AccountBalanceDailyDetailsRepository interestRateCalculatorRepo;
+	private AccountBalanceMonthlyDetailsRepository accountBalanceMonthlyDetailsRepository;
 
 	@Override
-	public void create(List<com.macquarie.niks.model.Entity> dailyAccountDetailsList) {
-		interestRateCalculatorRepo.saveAll(dailyAccountDetailsList).subscribe();
-		
-	}
-
-	@Override
-	public void updateDailyAccounts(List<com.macquarie.niks.model.Entity> dailyAccountDetailsList) {
+	public void create(List<com.macquarie.niks.model.Entity> monthlyAccountDetailsList) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -46,13 +39,13 @@ public class AccountBalanceServiceImpl implements AccountBalanceDailyService{
 	}
 
 	@Override
-	public void update(EntityDTO dailyAccountDetailsList) {
+	public void update(com.macquarie.niks.model.Entity monthlyAccountDetailsList) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateAccountDailyStatus(com.macquarie.niks.model.Entity dailyAccountDetailsList, String status) {
+	public void updateAccountDailyStatus(com.macquarie.niks.model.Entity monthlyAccountDetailsList, String status) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -64,17 +57,15 @@ public class AccountBalanceServiceImpl implements AccountBalanceDailyService{
 	}
 
 	@Override
-	public Flux<com.macquarie.niks.model.Entity> getAccountDailyDetails(String id, String month) {
+	public Flux<com.macquarie.niks.model.Entity> getAccountMonthlyDetails(String id, String month) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Flux<com.macquarie.niks.model.Entity> getAccountDailyDetails(String id) {
+	public Flux<com.macquarie.niks.model.Entity> getAccountMonthlyDetails(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }

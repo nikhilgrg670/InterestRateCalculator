@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDetailsDTO {
+public class AccountDetailsDTO implements EntityDTO {
  
     private long identification;
     private String openingDate;

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CloseAccountRequestDTO {
+public class CloseAccountRequestDTO implements EntityDTO {
 	
 	private String bsb;
 	private String identification;

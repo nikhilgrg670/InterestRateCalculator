@@ -14,6 +14,12 @@ import org.springframework.stereotype.Service;
 import com.macquarie.niks.kafka.service.KafkaService;
 import com.macquarie.niks.kafka.util.KafkaUtil;
 
+/**
+ * This class represents kafka consumer which will be used to consume daily feed messages.
+ * Assumption is configuration are already defined. 
+ * @author abc
+ *
+ */
 @Service
 @EnableKafka
 public class KakfaConsumer {
@@ -38,18 +44,31 @@ public class KakfaConsumer {
 	public String consumeDailyFeed( String message, Acknowledgment acknowledgment) {
 		
 		//TODO: will create messageObject from message
-		String messageObj = null ;
+		String messageObj = getMessageObject(message) ;
 		try {
+			
+			/*
+			 * Once we will be able to save the message successfully then we will provide the acknowledgement 
+			 * and will be able to move to next offset.*/
 			kafkaService.saveConsumerMessage(messageObj, message);
 		} catch(Exception e) {
 			//Logging
+			// NOTE: Failed messages will be sent to dead letter queue.
 			kafkaTemplate.send(errorTopic, 0, message);
 		} finally {
 			acknowledgment.acknowledge();
 		}
 		
+		/* Once a message is read, it will be furthur processed to calculate daily interest.
+		 * TODO: to make the following call in async mode. */
 		kafkaService.processDailyFeeds(messageObj, message);
 		return messageObj;
+	}
+
+
+	//TODO: logic to create message object from message needs to be defined.
+	private String getMessageObject(String message) {
+		return null;
 	}
 
 }

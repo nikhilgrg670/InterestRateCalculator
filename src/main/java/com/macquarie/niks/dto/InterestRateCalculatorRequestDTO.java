@@ -11,32 +11,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class InterestRateCalculatorRequestDTO {
+public class InterestRateCalculatorRequestDTO implements EntityDTO{
  
 	private String balanceDate;
-	private List<AccountBalanceDTO> accountBalanceDetails;
+	private List<EntityDTO> accountBalanceDetails;
 	
 	
-	public String getBalanceDate() {
-		return balanceDate;
-	}
-
-
-	public void setBalanceDate(String balanceDate) {
-		this.balanceDate = balanceDate;
-	}
-
-
-	public List<AccountBalanceDTO> getAccountBalanceDetails() {
-		return accountBalanceDetails;
-	}
-
-
-	public void setAccountBalanceDetails(List<AccountBalanceDTO> accountBalanceDetails) {
-		this.accountBalanceDetails = accountBalanceDetails;
-	}
-
-
 	@Override
 	public String toString() {
 		return "InterestRateCalculatorRequestDTO [balanceDate=" + balanceDate + ", accountBalanceDetails="

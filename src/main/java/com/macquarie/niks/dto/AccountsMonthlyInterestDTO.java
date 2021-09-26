@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountsMonthlyInterestDTO {
+public class AccountsMonthlyInterestDTO implements EntityDTO {
 	
 	
 	private String bsb;
