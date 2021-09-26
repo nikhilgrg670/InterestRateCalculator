@@ -1,78 +1,88 @@
 package com.macquarie.niks.model;
 
-import org.springframework.data.annotation.Id;
+import java.io.Serializable;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.data.couchbase.core.mapping.id.IdAttribute;
+import org.springframework.data.couchbase.core.mapping.id.IdPrefix;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.couchbase.client.java.repository.annotation.Field;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
- * This class is an entity for saving monthly interest accrued for a specific account.
- * Primary ID will be combination of identification, bsb, year and Month.
+ * This class is an entity for saving monthly interest accrued for a specific
+ * account. Primary ID will be combination of identification, bsb, year and
+ * Month.
  * 
- * This document will be created only once calculation of all the daily interests is done.
+ * This document will be created to save daily accrued interest amount.
  * 
- * This document will be used by our monthly calculator service to return the monthly interest of a customer.
- * Also this can be used as history for our monthly interest rate certificates
+ * This document will be in IN_PROGRESS once document is created.
+ * 
+ * This document status will be marked COMPLETED once last day of month has been
+ * passed.
+ * 
+ * This document will be used by our monthly calculator service to return the
+ * monthly interest of a customer. Also this can be used as history for our
+ * monthly interest rate certificates
+ * 
  * @author abc
  *
  */
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document
-public class AccountBalanceMonthlyDetails {
- 
-    @Id
-    long identification;
-    String bsb;
-    private String year;
-    private String month;
-    private String monthlyInterestRate; 
- 
-    //Getters and setters
- 
+public class AccountBalanceMonthlyDetails extends Entity implements Serializable {
 
-	public long getIdentification() {
-		return identification;
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7748856401126024819L;
 
-	public void setIdentification(long identification) {
-		this.identification = identification;
-	}
+	@IdPrefix(order = 0)
+	private String prefix = "IRC";
 
-	public String getBsb() {
-		return bsb;
-	}
+	@Field
+	@IdAttribute(order = 1)
+	long identification;
 
-	public void setBsb(String bsb) {
-		this.bsb = bsb;
-	}
+	@Field
+	@IdAttribute(order = 0)
+	String bsb;
 
-	public String getYear() {
-		return year;
-	}
+	@Field
+	@IdAttribute(order = 2)
+	private String year;
 
-	public void setYear(String year) {
-		this.year = year;
-	}
+	@Field
+	@IdAttribute(order = 3)
+	private String month;
 
-	public String getMonth() {
-		return month;
-	}
+	@Field
+	private String monthlyInterestRate;
 
-	public void setMonth(String month) {
-		this.month = month;
-	}
+	@Field
+	@NotNull
+	@Pattern(regexp = "IRC_ACCOUNT_MONTHLY")
+	private String type;
 
-	public String getMonthlyInterestRate() {
-		return monthlyInterestRate;
-	}
-
-	public void setMonthlyInterestRate(String monthlyInterestRate) {
-		this.monthlyInterestRate = monthlyInterestRate;
-	}
+	@Field
+	private String status = "IN_PROGRESS";
 
 	@Override
 	public String toString() {
-		return "AccountBalanceMonthlyDetails [identification=" + identification + ", bsb=" + bsb + ", year=" + year
-				+ ", month=" + month + ", monthlyInterestRate=" + monthlyInterestRate + "]";
+		return "AccountBalanceMonthlyDetails [prefix=" + prefix + ", identification=" + identification + ", bsb=" + bsb
+				+ ", year=" + year + ", month=" + month + ", monthlyInterestRate=" + monthlyInterestRate + ", type="
+				+ type + "]";
 	}
 
-
-	
 }

@@ -1,4 +1,4 @@
-package com.macquarie.niks.service;
+package com.macquarie.niks.service.manager;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -6,20 +6,17 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.macquarie.niks.dao.InterestRateCalculatorRepository;
 import com.macquarie.niks.dto.AccountBalanceDTO;
 import com.macquarie.niks.dto.AccountDetailsDTO;
 import com.macquarie.niks.dto.AccountsMonthlyInterestDTO;
 import com.macquarie.niks.dto.InterestRateCalculatorRequestDTO;
+import com.macquarie.niks.repo.AccountBalanceDailyDetailsRepository;
 import com.macquarie.niks.util.InterestRateCalculatorUtil;
 
 import reactor.core.publisher.Flux;
 
 @Service
-public class InterestRateCalculatorServiceImpl implements InterestRateCalculatorService {
-
-	@Autowired
-	InterestRateCalculatorRepository interestRateCalculatorRepo;
+public class InterestRateCalculatorServiceManagerImpl implements InterestRateCalculatorServiceManager {
 
 	@Autowired
 	InterestRateCalculatorUtil interestRateCalculatorUtil;

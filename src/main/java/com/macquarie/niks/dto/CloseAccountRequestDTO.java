@@ -1,24 +1,17 @@
 package com.macquarie.niks.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CloseAccountRequestDTO {
 	
 	private String bsb;
 	private String identification;
-	
-	
-	public String getBsb() {
-		return bsb;
-	}
-	public void setBsb(String bsb) {
-		this.bsb = bsb;
-	}
-	public String getIdentification() {
-		return identification;
-	}
-	public void setIdentification(String identification) {
-		this.identification = identification;
-	}
-	
-	
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.macquarie.niks.dto.CloseAccountRequestDTO;
 import com.macquarie.niks.dto.InterestRateCalculatorRequestDTO;
-import com.macquarie.niks.service.InterestRateCalculatorService;
+import com.macquarie.niks.service.manager.InterestRateCalculatorServiceManager;
  
 @RestController
 @RequestMapping("/everyday-banking/v1")
@@ -23,7 +23,7 @@ import com.macquarie.niks.service.InterestRateCalculatorService;
  */
 public class InterestRateCalculatorController {
     @Autowired
-    private InterestRateCalculatorService interestRateCalculatorService;
+    private InterestRateCalculatorServiceManager interestRateCalculatorService;
  
 
     /**
@@ -38,9 +38,7 @@ public class InterestRateCalculatorController {
     @RequestMapping(value = "/dailyFeed", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public void saveDailyFeed(@RequestBody InterestRateCalculatorRequestDTO interestRateCalculatorDTO) {
-    	
-    	interestRateCalculatorService.saveDailyFeeds(interestRateCalculatorDTO);
-    	
+    	interestRateCalculatorService.processDailyFeeds(interestRateCalculatorDTO);
     }
 
     /**

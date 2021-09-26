@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.macquarie.niks.dto.InterestRateCalculatorRequestDTO;
-import com.macquarie.niks.service.InterestRateCalculatorService;
+import com.macquarie.niks.service.manager.InterestRateCalculatorServiceManager;
 import com.macquarie.niks.util.InterestRateCalculatorUtil;
 
 @Service
@@ -14,7 +14,7 @@ public class KafkaService {
 	private InterestRateCalculatorUtil interestRateCalculatorUtil;
 	
 	@Autowired
-	private InterestRateCalculatorService interestRateCalculatorService;
+	private InterestRateCalculatorServiceManager interestRateCalculatorService;
 	
 	
 	public void saveConsumerMessage(String messageObj, String message) {

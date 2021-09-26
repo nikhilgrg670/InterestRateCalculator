@@ -1,36 +1,20 @@
 package com.macquarie.niks.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountDetailsDTO {
  
-    long identification;
-    String openingDate;
-    String bsb;
+    private long identification;
+    private String openingDate;
+    private String bsb;
  
-    //Getters and setters
- 
-	public long getIdentification() {
-		return identification;
-	}
-
-	public void setIdentification(long identification) {
-		this.identification = identification;
-	}
-
-	public String getOpeningDate() {
-		return openingDate;
-	}
-
-	public void setOpeningDate(String openingDate) {
-		this.openingDate = openingDate;
-	}
-
-	public String getBsb() {
-		return bsb;
-	}
-
-	public void setBsb(String bsb) {
-		this.bsb = bsb;
-	}
 
 	@Override
 	public String toString() {

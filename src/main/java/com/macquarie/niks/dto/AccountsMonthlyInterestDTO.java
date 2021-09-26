@@ -1,5 +1,14 @@
 package com.macquarie.niks.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountsMonthlyInterestDTO {
 	
 	
@@ -9,30 +18,6 @@ public class AccountsMonthlyInterestDTO {
 	private String interestAccrued;
 	
 	
-	public String getBsb() {
-		return bsb;
-	}
-	public void setBsb(String bsb) {
-		this.bsb = bsb;
-	}
-	public String getIdentification() {
-		return identification;
-	}
-	public void setIdentification(String identification) {
-		this.identification = identification;
-	}
-	public String getMonth() {
-		return month;
-	}
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	public String getInterestAccrued() {
-		return interestAccrued;
-	}
-	public void setInterestAccrued(String interestAccrued) {
-		this.interestAccrued = interestAccrued;
-	}
 	
 	@Override
 	public String toString() {

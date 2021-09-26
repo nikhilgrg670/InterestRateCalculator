@@ -8,16 +8,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.macquarie.niks.dao.InterestRateCalculatorRepository;
 import com.macquarie.niks.dto.AccountBalanceDTO;
 import com.macquarie.niks.dto.AccountDetailsDTO;
 import com.macquarie.niks.dto.InterestRateCalculatorRequestDTO;
+import com.macquarie.niks.repo.AccountBalanceDailyDetailsRepository;
 
 @Service
 public class InterestRateCalculatorUtil {
 	
 	@Autowired
-	private InterestRateCalculatorRepository interestRateCalculatorRepository;
+	private AccountBalanceDailyDetailsRepository interestRateCalculatorRepository;
 	
 	/**
 	 * This method will be used to do initial level validations like length of bsb/identification.
