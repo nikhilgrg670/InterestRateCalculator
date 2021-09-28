@@ -41,12 +41,12 @@ This Repository is the starting point. In this repository, there are following c
 	 eg. Assume :Today is Sep 25,2021.
 	 	  Assume :Today interest calculated for a customer is 283.4
 	 	  Assume :Total interest calculated till now(till Sep 24,2021) for a customer 1200
-	     AccountBalanceDailyDetail will be updated as 1200+283.4.
+	     AccountBalanceMonthlyDetail will be updated as 1200+283.4.
 	     
 	    Intial status for this document would be IN_PROGRESS. Once updation for last day of month
 	    is completed. This is changed to completed.
 	    This table will be used to publish monthly interest of a customer.
-	    Also, this table will be used to calculate daily interest for a closure request account.
+	    Also, this table will be used to calculate interest for a closure request account.
 
 # ASSUMPTIONS:
 
